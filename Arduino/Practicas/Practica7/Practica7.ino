@@ -1,21 +1,25 @@
 /*
   Practica 7 --> LED por PUSH DOWN
 */
-
-int est=0;
+bool banant=true;
+bool banact=false;
+bool est=false;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(10, INPUT);
-  pinMode(13,OUTPUT);
-  Serial.begin(9600);
-  digitalWrite(13,HIGH);
+  pinMode(10, OUTPUT);
+  pinMode(13,INPUT_PULLUP);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  est = digitalRead(10);
-  if(est==1){
-    Serial.println("Encendido");
-  }
+    int banact = digitalRead(13);
+
+    if(banact==LOW && banant==HIGH){
+      est=!est;
+      digitalWrite(10,est);
+    }
+
+    banant=banact;
+  delay(100);
 }

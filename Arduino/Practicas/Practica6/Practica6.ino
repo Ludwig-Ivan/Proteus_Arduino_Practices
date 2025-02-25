@@ -11,7 +11,7 @@ void setup() {
 void loop() {
   // digitalWrite escribe en el pin indicado un estado LOW (0v) o HIGH (5.5v)
   digitalWrite(10, HIGH);
-  delay(100);
+  delay(1000);
   digitalWrite(10, LOW);
-  delay(100);
+  delay(1000);
 }

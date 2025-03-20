@@ -1,4 +1,5 @@
 int valor;
+bool rojo, azul, verde, buzz;
 
 void setup() {
   // put your setup code here, to run once:
@@ -7,6 +8,10 @@ void setup() {
   pinMode(3,OUTPUT);
   pinMode(4,OUTPUT);
   pinMode(5,OUTPUT);
+  azul=false;
+  rojo=false;
+  verde=false;
+  buzz=false;
 }
 
 void limpiar(){
@@ -19,17 +24,26 @@ void limpiar(){
 void loop() {
   // put your main code here, to run repeatedly:
   if(Serial.available()>0){
-    limpiar();
     valor=Serial.read();
     Serial.println(valor);
 
-  if(valor==49)
-    digitalWrite(2,HIGH);
-  if(valor==50)
-    digitalWrite(3,HIGH);
-  if(valor==51)
-    digitalWrite(4,HIGH);
+  if(valor==49){
+    rojo=!rojo;
+    digitalWrite(2,rojo);
+  }
+    
+  if(valor==50){
+    verde=!verde;
+    digitalWrite(3,verde);
+  }
+    
+  if(valor==51){
+    azul=!azul;
+    digitalWrite(4,azul);
+  }
+  
   if(valor==52)
-    digitalWrite(5,HIGH);
+    buzz=!buzz;
+    digitalWrite(5,buzz);
   }
 }
